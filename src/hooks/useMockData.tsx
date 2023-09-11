@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getPlaceMockData } from '../api/requestApi';
-import { ChartObj, ChartObjParams } from '../types/chartData';
+import { ChartData, ChartObj } from '../types/chartData';
 
 const useMockData = () => {
   const [chartData, setChartData] = useState<ChartObj[]>([]);
@@ -15,7 +15,7 @@ const useMockData = () => {
         const { response } = res.data;
 
         if (res.status === 200 && Object.keys(response).length > 0) {
-          const newArray = changeFormat(response);
+          const newArray = Object.entries(response).map(([date, data]) => ({ date, ...(data as ChartData) }));
           setChartData(newArray);
           setIsLoading(false);
         } else {
@@ -32,19 +32,6 @@ const useMockData = () => {
   }, []);
 
   return { chartData, isLoading };
-};
-
-const changeFormat = ({ ...data }: ChartObjParams) => {
-  const newArray = Object.entries(data).map(([date, data]) => {
-    return {
-      date,
-      ...data,
-      value_area: data.value_area.toFixed(2),
-      value_bar: data.value_bar.toFixed(2)
-    };
-  });
-
-  return newArray;
 };
 
 const ERROR_MESSAGES = '데이터 호출에 실패했습니다.';
