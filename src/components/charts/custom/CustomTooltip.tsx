@@ -1,6 +1,6 @@
 import { TooltipProps } from 'recharts';
 import styled from 'styled-components';
-import location from '../../icons/location.svg';
+import location from '../../../icons/location.svg';
 
 const CustomTooltip = ({ active, payload }: TooltipProps<string, string>) => {
   if (active && payload && payload.length) {
