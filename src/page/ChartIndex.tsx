@@ -1,30 +1,26 @@
-import { MouseEvent } from 'react';
 import styled from 'styled-components';
 import Chart from '../components/charts/Chart';
 import Loading from '../components/common/Loading';
 import FilterButtonList from '../components/filter/FilterButtonList';
 import useMockData from '../hooks/useMockData';
+import { FilterProvider } from '../state/FilterContext';
 
 const ChartIndex = () => {
-  const { chartData, filterIds, isLoading } = useMockData();
+  const { chartData, filterArr, isLoading } = useMockData();
 
   if (isLoading) {
     return <Loading />;
   }
 
-  const applyFilter = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log(e.currentTarget.value);
-  };
-
   return (
-    <>
+    <FilterProvider>
       <FilterBox>
-        <FilterButtonList filterIds={filterIds} onClick={applyFilter} />
+        <FilterButtonList filterArr={filterArr} />
       </FilterBox>
       <ChartBox>
         <Chart data={chartData} />
       </ChartBox>
-    </>
+    </FilterProvider>
   );
 };
 
