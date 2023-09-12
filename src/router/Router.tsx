@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import ChartPage from '../page/ChartPage';
+import ChartIndex from '../page/ChartIndex';
 
 const Router = () => {
   return (
     <Routes>
-      <Route path="/chart" element={<ChartPage />} />
+      <Route path="/chart" element={<ChartIndex />} />
       <Route path="/*" element={<Navigate to="/chart" replace={true} />} />
     </Routes>
   );
