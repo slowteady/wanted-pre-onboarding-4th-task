@@ -33,8 +33,8 @@ const Chart = ({ data }: { data: ChartObj[] }) => {
         <Tooltip content={<CustomTooltip />} />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="value_bar" yAxisId="left" barSize={10} fill="#ababd2" />
-        <Area yAxisId="right" dataKey="value_area" fill="#8884d8" stroke="#8884d8" />
+        <Bar dataKey="value_bar" yAxisId="left" barSize={10} fill="#c5c5f2" />
+        <Area yAxisId="right" dataKey="value_area" fill="#b1b1bde4" stroke="#b1b1bde4" />
       </ComposedChart>
     </ResponsiveContainer>
   );

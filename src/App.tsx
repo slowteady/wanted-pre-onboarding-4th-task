@@ -20,6 +20,8 @@ const FullWrap = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background-color: rgb(237 242 244 / 90%);
 `;
 
 export default App;
