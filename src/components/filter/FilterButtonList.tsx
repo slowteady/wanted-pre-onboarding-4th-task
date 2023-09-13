@@ -2,11 +2,7 @@ import { memo } from 'react';
 import styled from 'styled-components';
 import { useFilter } from '../../state/FilterContext';
 
-interface FilterButtonListProps {
-  filterArr: string[];
-}
-
-const FilterButtonList = ({ filterArr }: FilterButtonListProps) => {
+const FilterButtonList = ({ filterArr }: { filterArr: string[] }) => {
   const { filterIds, setFilterIds } = useFilter();
 
   const activeToggle = (id: string) => {
