@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 import { useFilter } from '../../state/FilterContext';
 
@@ -23,7 +24,7 @@ const FilterButtonList = ({ filterArr }: FilterButtonListProps) => {
   return (
     <>
       <FilterBtnBox>
-        <Button data-isactive={false} isReset onClick={resetFilter}>
+        <Button data-isactive={false} data-isreset={true} onClick={resetFilter}>
           초기화
         </Button>
         {filterArr &&
@@ -46,24 +47,24 @@ const FilterBtnBox = styled.div`
   align-items: center;
 `;
 
-const Button = styled.button<{ 'data-isactive': boolean; isReset?: boolean }>`
+const Button = styled.button<{ 'data-isactive': boolean; 'data-isreset'?: boolean }>`
   padding: 8px 20px;
   margin: 0 3px;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
   color: #ffffff;
-  background-color: ${(props) => (props.isReset ? '#86868e' : props['data-isactive'] ? '#0a68ce' : '#428edf')};
+  background-color: ${(props) => (props['data-isreset'] ? '#86868e' : props['data-isactive'] ? '#0a68ce' : '#428edf')};
   border-radius: 6px;
   border: none;
   transition: background-color 0.3s ease;
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => (props.isReset ? '#626268' : '#0a68ce')};
+    background-color: ${(props) => (props['data-isreset'] ? '#626268' : '#0a68ce')};
   }
 
-  ${(props) => props.isReset && 'margin-right: 30px;'}
+  ${(props) => props['data-isreset'] && 'margin-right: 30px;'}
 `;
 
-export default FilterButtonList;
+export default memo(FilterButtonList);
