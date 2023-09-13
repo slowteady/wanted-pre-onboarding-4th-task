@@ -34,7 +34,7 @@ cd wanted-pre-onboarding-4th-task
 
 3. 환경 설정
 
-```
+```bash
 echo "REACT_APP_BASE_URL = http://localhost:3000" > .env
 ```
 
